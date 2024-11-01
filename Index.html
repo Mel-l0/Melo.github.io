@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Love You Daw</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffcccb;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .popup {
+            text-align: center;
+            padding: 30px;
+            background-color: #fff;
+            border: 2px solid #ff6b6b;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            width: 300px;
+        }
+        .popup h1 {
+            color: #ff6b6b;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .button-yes {
+            background-color: #ff6b6b;
+            color: #fff;
+        }
+        .button-yes:hover {
+            background-color: #ff5252;
+        }
+        .button-no {
+            background-color: #ddd;
+            color: #333;
+            position: absolute;
+        }
+        .button-back {
+            background-color: #777;
+            color: #fff;
+            margin-top: 20px;
+        }
+        .love-gif {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .love-gif img {
+            width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="popup" id="popup">
+        <h1>Do You Like Me? ❤️</h1>
+        <p>Please be honest!</p>
+        <div class="button-container">
+            <button class="button button-yes" onclick="confessLove()">Yes</button>
+            <button class="button button-no" id="noButton" onclick="avoidNo()">No</button>
+        </div>
+    </div>
+
+    <!-- Love GIF container -->
+    <div class="love-gif" id="loveGif">
+        <p style="font-size: 24px; color: #ff6b6b;">Yay! I Like You Too! ❤️</p>
+        <img src="https://media0.giphy.com/media/3M4NpbLCTxBqU/giphy.gif?cid=6c09b952bcckq3as7ye28t7914099idef06hndvlagejqkm2&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g" alt="Love GIF">
+        <button class="button button-back" onclick="goBack()">Back</button>
+    </div>
+
+    <script>
+        // Move the "No" button to a random position within the screen
+        function avoidNo() {
+            const button = document.getElementById("noButton");
+            const x = Math.random() * (window.innerWidth - button.offsetWidth);
+            const y = Math.random() * (window.innerHeight - button.offsetHeight);
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+        }
+
+        // Show love GIF when "Yes" is clicked
+        function confessLove() {
+            document.getElementById("popup").style.display = "none";
+            document.getElementById("loveGif").style.display = "block";
+        }
+
+        // Go back to the original popup
+        function goBack() {
+            document.getElementById("popup").style.display = "block";
+            document.getElementById("loveGif").style.display = "none";
+        }
+    </script>
+</body>
+</html>
+
